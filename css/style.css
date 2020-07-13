@@ -2667,3 +2667,7 @@ wix-image {
     #mediait2pzfvm7inlineContent-gridContainer > [id$="-rotated-wrapper"] > * {
         pointer-events: auto;
     }
+
+.gm1mapContainer {
+    height: 162px;
+}
