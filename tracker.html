@@ -18,6 +18,8 @@
     <!-- Responsive -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/icons.css" />
 </head>
 <body class="prewarmup">
     <div id="SITE_CONTAINER">
@@ -151,8 +153,65 @@
                         </div>
                     </header>
                     <main tabindex="-1" data-is-mobile="false" data-is-mesh="true" data-site-width="980" style="left:0;margin-left:0;width:100%;min-width:980px;top:0;bottom:;right:;position:" class="pc1" data-state="" id="PAGES_CONTAINER">
-                        <div style="margin-left:calc((100% - 980px) / 2);width:980px">
-                            <img src="images/underconstruction.png" style="padding:40px;" />
+                        <div class=" col min-12">
+                            <div class="row pt-find-container">
+                                <div class="col med-6">
+                                    <div class="pt-find">
+                                        <form id="shipmentsearch" class="search-form form__element" novalidate="novalidate">
+                                            <div class="form__field">
+                                                <input type="text" class="search-form__input" id="input_shipmentnumber" name="Search" required="" placeholder="Enter transport document number" maxlength="11" minlength="9" data-validation-message="true" data-validation-message-required="ao.track.search.validation.required" data-validation-message-minlength="ao.track.search.validation.minlength" data-validation-message-bolorcontainernumber="ao.track.search.validation.number" aria-label="_SEARCH" role="search" autocomplete="on" no-validate="" aria-required="true">
+                                                <button class="search-form__button search-form__button--clear" title="_CLEAR" type="button">
+                                                    <span class="icon icon-error " aria-hidden="true"></span>
+                                                    <span class="screen-reader-only">error_icon</span>
+                                                </button>
+                                            </div>
+                                            <button class="button button--primary button--right">SEARCH</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="col med-6">
+                                    <button id="results_print" class="float-right resultPrint" aria-label="Print" tabindex="0" type="button">
+                                        <a href="admin.html" style="color:black">
+                                            <span class="resultPrint__icon icon icon-account-id icon--inline-block"></span>
+                                            <span>Admin Portal</span>
+                                        </a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div id="shipmentresults" class="col min-12 pt-results" style="display:none;">
+                                <div>
+                                    <dl class="pt-from-to">
+                                        <dt>Transport document number:</dt>
+                                        <dd id="shipmentnumber" class="font--display-1--heavy"></dd>
+                                    </dl>
+                                    <dl class="pt-from-to">
+                                        <dt>From</dt>
+                                        <dd id="from" class="font--display-1--heavy"></dd>
+                                    </dl>
+                                    <dl class="pt-from-to">
+                                        <dt>To</dt>
+                                        <dd id="to" class="font--display-1--heavy"></dd>
+                                    </dl>
+                                </div>
+                                <div class="expandable-table ">
+                                    <table class="expandable-table__wrapper" id="table_id">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Container details</th>
+                                                <th scope="col">Container type size</th>
+                                                <th scope="col">Loading date</th>
+                                                <th scope="col">Estimated arrival date</th>
+                                                <th scope="col">Last location</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="shipmentdetailsdata" data-attach-point="table-body"></tbody>
+                                    </table>
+                                </div>	<div class="notification   notification--info " role="alert">
+                                    <p class="notification__message    notification__message--icon icon-info-solid ">All dates and times are given as reasonable estimates only and subject to change without prior notice.</p>
+                                </div>
+                            </div>
                         </div>
                     </main>
                     <footer style="bottom:auto;overflow:hidden;left:0;margin-left:0;width:100%;min-width:980px;top:;right:;position:" class="style-juj5tk0i_footer style-juj5tk0i" tabindex="-1" data-site-width="980" data-fixedposition="false" data-isrunninginmobile="false" data-is-absolute-layout="false" data-state=" " id="SITE_FOOTER">
@@ -227,6 +286,11 @@
             <div id="SCROLL_TO_BOTTOM" tabindex="-1" aria-label="bottom of page" role="region" style="height:0"></div>
         </div>
     </div>
+
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/rest.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
 
