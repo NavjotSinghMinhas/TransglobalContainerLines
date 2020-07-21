@@ -1,4 +1,4 @@
-$apiURL = "https://localhost:5001"
+$apiURL = "https://api.navjotsinghminhas.com"
 
 $("#shipmentsearch").submit(function (e) {
     $('#shipmentresults').css('display', 'none');
