@@ -139,49 +139,69 @@ $("#comp-jie33ey5form").submit(function (e) {
 });
 
 function upload() {
-    if (window.fileData != undefined && $('#comp-jie33eyfinput').val() != '' && $('#comp-jie33eyuinput').val() != '') {
-        var fd = new FormData();
-        fd.append("file", window.fileData);
-        fd.append("username", $('#comp-jie33eyfinput').val());
-        fd.append("password", $('#comp-jie33eyuinput').val());
-        postData($apiURL + '/transglobal/upload', fd)
-            .then(response => {
-                if (response.response == 'success') {
-                    $('#uploadStatus').html("<h1 class='font--display-1'>Successfully uploaded.</h1>");
-                    $('#file').val('');
-                    window.fileData = undefined;
-                }
-                else if (response.response == '')
-                    $('#uploadStatus').html("<h1 class='font--display-1'>Error occured, try again.</h1>");
-                else
-                    $('#uploadStatus').html("<h1 class='font--display-1'>" + response.response + "</h1>");
-            });
+    try {
+        if (window.fileData != undefined && $('#comp-jie33eyfinput').val() != '' && $('#comp-jie33eyuinput').val() != '') {
+            var fd = new FormData();
+            fd.append("file", window.fileData);
+            fd.append("username", $('#comp-jie33eyfinput').val());
+            fd.append("password", $('#comp-jie33eyuinput').val());
+            postData($apiURL + '/transglobal/upload', fd)
+                .then(response => {
+                    try {
+                        if (response.response == 'success') {
+                            $('#uploadStatus').html("<h1 class='font--display-1'>Successfully uploaded.</h1>");
+                            $('#file').val('');
+                            window.fileData = undefined;
+                        }
+                        else if (response.response == '')
+                            $('#uploadStatus').html("<h1 class='font--display-1'>Error occured, try again.</h1>");
+                        else
+                            $('#uploadStatus').html("<h1 class='font--display-1'>" + response.response + "</h1>");
+                    }
+                    catch (err) {
+                        $('#uploadStatus').html("<h1 class='font--display-1'>Error occured, try again.</h1>");
+                    }
+                });
 
-        $('#uploadStatus').html("<div class='spinner-border text-success' style='width: 2rem; height: 2rem; margin: 5px 10px 0 0;' role='status'><span class='sr-only'>Loading...</span></div><h1 class='font--display-1'>Uploading</h1>");
+            $('#uploadStatus').html("<div class='spinner-border text-success' style='width: 2rem; height: 2rem; margin: 5px 10px 0 0;' role='status'><span class='sr-only'>Loading...</span></div><h1 class='font--display-1'>Uploading</h1>");
+        }
+        else
+            $('#uploadStatus').html("<h1 class='font--display-1'>All fields are required.</h1>");
     }
-    else
-        $('#uploadStatus').html("<h1 class='font--display-1'>All fields are required.</h1>");
+    catch (err) {
+        $('#uploadStatus').html("<h1 class='font--display-1'>Error occured, try again.</h1>");
+    }
 }
 
 function deleteShipment() {
-    if ($('#shipmentId').val() != '') {
-        var fd = new FormData();
-        fd.append("username", $('#comp-jie33eyfinput').val());
-        fd.append("password", $('#comp-jie33eyuinput').val());
-        deleteData($apiURL + '/transglobal/shipment/' + $('#shipmentId').val(), fd)
-            .then(response => {
-                if (response.response == 'success') {
-                    $('#deleteStatus').html("<h1 class='font--display-1'>Successfully deleted.</h1>");
-                    $('#shipmentId').val('');
-                }
-                else if (response.response == '')
-                    $('#deleteStatus').html("<h1 class='font--display-1'>Error occured, try again.</h1>");
-                else
-                    $('#deleteStatus').html("<h1 class='font--display-1'>" + response.response + "</h1>");
-            });
+    try {
+        if ($('#shipmentId').val() != '') {
+            var fd = new FormData();
+            fd.append("username", $('#comp-jie33eyfinput').val());
+            fd.append("password", $('#comp-jie33eyuinput').val());
+            deleteData($apiURL + '/transglobal/shipment/' + $('#shipmentId').val(), fd)
+                .then(response => {
+                    try {
+                        if (response.response == 'success') {
+                            $('#deleteStatus').html("<h1 class='font--display-1'>Successfully deleted.</h1>");
+                            $('#shipmentId').val('');
+                        }
+                        else if (response.response == '')
+                            $('#deleteStatus').html("<h1 class='font--display-1'>Error occured, try again.</h1>");
+                        else
+                            $('#deleteStatus').html("<h1 class='font--display-1'>" + response.response + "</h1>");
+                    }
+                    catch (err) {
+                        $('#deleteStatus').html("<h1 class='font--display-1'>Error occured, try again.</h1>");
+                    }
+                });
 
-        $('#deleteStatus').html("<div class='spinner-border text-success' style='width: 2rem; height: 2rem; margin: 5px 10px 0 0;' role='status'><span class='sr-only'>Loading...</span></div><h1 class='font--display-1'>Deleting</h1>");
+            $('#deleteStatus').html("<div class='spinner-border text-success' style='width: 2rem; height: 2rem; margin: 5px 10px 0 0;' role='status'><span class='sr-only'>Loading...</span></div><h1 class='font--display-1'>Deleting</h1>");
+        }
+        else
+            $('#deleteStatus').html("<h1 class='font--display-1'>Shipment Number required.</h1>");
     }
-    else
-        $('#deleteStatus').html("<h1 class='font--display-1'>Shipment Number required.</h1>");
+    catch (err) {
+        $('#deleteStatus').html("<h1 class='font--display-1'>Error occured, try again.</h1>");
+    }
 }
