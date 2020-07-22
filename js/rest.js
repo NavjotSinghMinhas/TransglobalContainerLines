@@ -14,5 +14,5 @@ async function postData(url = '', data = {}) {
         cache: 'no-cache',
         body: data
     });
-    return await response;
+    return await response.json();
 }

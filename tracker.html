@@ -153,6 +153,61 @@
                         </div>
                     </header>
                     <main tabindex="-1" data-is-mobile="false" data-is-mesh="true" data-site-width="980" style="left:0;margin-left:0;width:100%;min-width:980px;top:0;bottom:;right:;position:" class="pc1" data-state="" id="PAGES_CONTAINER">
+                        <section style="left:0;width:100%;min-width:980px;margin:0" data-responsive="true" data-is-screen-width="true" data-col-margin="0" data-row-margin="0" class="strc1" id="comp-jie33exm">
+                            <div style="position:relative;width:calc(100% - 0px);min-width:980px" id="comp-jie33exminlineContent" class="strc1inlineContent">
+                                <div style="position:relative;width:100%;left:0;flex:980;margin-left:0;min-width:980px;top:0;margin-top:0;margin-bottom:0;height:;display:flex;bottom:;right:" data-content-width="980" data-is-mesh="true" class="strc1" id="comp-jie33exq">
+                                    <div style="position:absolute;top:0;width:100%;height:100%;overflow:hidden;pointer-events:auto;left:0;right:0;bottom:0" data-page-id="engjp" data-enable-video="true" data-bg-effect-name="" data-full-screen-height="" data-media-type="" data-use-clip-path="" data-needs-clipping="" data-wix-video-layout="true" class="strc1balata" id="comp-jie33exqbalata">
+                                        <div style="position:absolute;width:100%;height:100%;top:0;background-color:rgba(206, 32, 38, 1)" class="bgColor" id="comp-jie33exqbalatabgcolor">
+                                            <div style="width:100%;height:100%;position:absolute;top:0;background-image:;opacity:1" id="comp-jie33exqbalatabgcoloroverlay" class="bgColoroverlay"></div>
+                                        </div>
+                                    </div>
+                                    <div style="width:100%;position:relative;top:0;bottom:0" class="strc1inlineContent" id="comp-jie33exqinlineContent">
+                                        <style id="comp-jie33exq-mesh-styles">
+
+                                            #comp-jie33exqinlineContent {
+                                                height: auto;
+                                                width: 100%;
+                                                position: relative;
+                                            }
+
+                                            #comp-jie33exqinlineContent-gridContainer {
+                                                position: static;
+                                                height: auto;
+                                                width: 100%;
+                                                min-height: 14px;
+                                                background-color: #737171;
+                                            }
+
+                                            #comp-jie33exqcenteredContent {
+                                                position: relative;
+                                            }
+
+                                            #comp-jie33exqinlineContent-gridWrapper {
+                                                pointer-events: none;
+                                            }
+
+                                            #comp-jie33exqinlineContent-gridContainer > * {
+                                                pointer-events: auto;
+                                            }
+
+                                            #comp-jie33exqinlineContent-gridContainer > [id$="-rotated-wrapper"] {
+                                                pointer-events: none;
+                                            }
+
+                                                #comp-jie33exqinlineContent-gridContainer > [id$="-rotated-wrapper"] > * {
+                                                    pointer-events: auto;
+                                                }
+                                        </style>
+                                        <div id="comp-jie33exqinlineContent-gridContainer" data-mesh-internal="true"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <header id="nav" class="page-header">
+                            <div class="page-header__content">
+                                <h1 id="page-heading">Tracking results</h1>
+                            </div>
+                        </header>
                         <div class=" col min-12">
                             <div class="row pt-find-container">
                                 <div class="col med-6">
@@ -169,7 +224,7 @@
                                         </form>
                                     </div>
                                 </div>
-                                <div class="col med-6">
+                                <div class="col med-6" style="margin-top: -100px;">
                                     <button id="results_print" class="float-right resultPrint" aria-label="Print" tabindex="0" type="button">
                                         <a href="admin.html" style="color:black">
                                             <span class="resultPrint__icon icon icon-account-id icon--inline-block"></span>
@@ -179,7 +234,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" style="padding-bottom: 20px;">
+                            <div id="errorshipmentresults" class="col min-12 pt-results" style="display:none;">
+                                <h1 class="font--display-1">No results found</h1>
+                                <br/>
+                                <p class="resultError">Looks like we can't find any transport documents or containers available on public track for your search.<br>Please check you have entered your reference correctly and try again.<br><br>If you are a party to this shipment, to find out more information, please contact us on <a href="https://transglobalcontainerlines.com/contact-us">transglobalcontainerlines.com</a><br/><br/></p>
+                            </div>
                             <div id="shipmentresults" class="col min-12 pt-results" style="display:none;">
                                 <div>
                                     <dl class="pt-from-to">
