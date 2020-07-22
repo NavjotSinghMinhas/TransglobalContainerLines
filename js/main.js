@@ -88,7 +88,7 @@ function getDate(date) {
         "May", "Jun", "Jul", "Aug",
         "Sep", "Oct", "Nov", "Dec"];
 
-    return date.substring(0, 2) + ' ' + monthNames[date.substring(3, 5).replace(/^0+/, '') - 1] + ' ' + date.substring(6, 10);
+    return date.substring(3, 5) + ' ' + monthNames[date.substring(0, 2).replace(/^0+/, '') - 1] + ' ' + date.substring(6, 10);
 }
 
 function getClosestDateIndex(response) {
