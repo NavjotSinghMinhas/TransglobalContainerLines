@@ -10,7 +10,17 @@ async function getData(url = '') {
 async function postData(url = '', data = {}) {
     var response = await fetch(url, {
         method: 'POST',
-        mode: 'cors', // no-cors, *cors, same-origin
+        mode: 'cors',
+        cache: 'no-cache',
+        body: data
+    });
+    return await response.json();
+}
+
+async function deleteData(url = '', data = {}) {
+    var response = await fetch(url, {
+        method: 'DELETE',
+        mode: 'cors',
         cache: 'no-cache',
         body: data
     });

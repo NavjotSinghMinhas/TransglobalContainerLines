@@ -31,7 +31,7 @@ function enableDropdown() {
                                 html += response[i].Status + "<div class='timeline__event-table__cell--desc__icon icon icon-truck'></div></td></tr></tbody ></table ></div >";
                                 break;
                             case 'Load':
-                                html += response[i].Status + "ed on " + response[i]['Vessel Name'] + "<br>Voyage No. " + response[i]['Voyage Number'] + "<div class='timeline__event-table__cell--desc__icon icon icon-vessel'></div></td></tr></tbody ></table ></div >";
+                                html += response[i].Status + " on " + response[i]['Vessel Name'] + "<br>Voyage No. " + response[i]['Voyage Number'] + "<div class='timeline__event-table__cell--desc__icon icon icon-vessel'></div></td></tr></tbody ></table ></div >";
                                 break;
                             case 'Discharge':
                                 html += response[i].Status + "<div class='timeline__event-table__cell--desc__icon icon icon-vessel'></div></td></tr></tbody ></table ></div >";
@@ -88,6 +88,9 @@ function getDate(date) {
         "May", "Jun", "Jul", "Aug",
         "Sep", "Oct", "Nov", "Dec"];
 
+    // Dev
+    //return date.substring(0, 2) + ' ' + monthNames[date.substring(3, 5).replace(/^0+/, '') - 1] + ' ' + date.substring(6, 10);
+    // Prod
     return date.substring(3, 5) + ' ' + monthNames[date.substring(0, 2).replace(/^0+/, '') - 1] + ' ' + date.substring(6, 10);
 }
 
@@ -96,18 +99,14 @@ function getClosestDateIndex(response) {
     var date = new Date();
 
     for (var i = 0; i < response.length; i++) {
-        if (response[i].Date.substring(6, 10) < date.getFullYear()) {
-            counter++;
-            continue;
-        }
-        if (response[i].Date.substring(3, 4) < (date.getMonth() + 1)) {
-            counter++;
-            continue;
-        }
-
-        if (response[i].Date.substring(0, 2) <= date.getDate()) {
-            counter++;
-            continue;
+        if (response[i].Date.substring(6, 10) <= date.getFullYear()) {
+            // Change 3, 5 to 0, 2 at Dev
+            if (response[i].Date.substring(0, 2) <= (date.getMonth() + 1)) {
+                if (response[i].Date.substring(3, 5) <= date.getDate()) {
+                    counter++;
+                    continue;
+                }
+            }
         }
 
         return counter;
@@ -136,7 +135,6 @@ $('#file').on('change', async function () {
 });
 
 $("#comp-jie33ey5form").submit(function (e) {
-    upload();
     e.preventDefault();
 });
 
@@ -163,4 +161,27 @@ function upload() {
     }
     else
         $('#uploadStatus').html("<h1 class='font--display-1'>All fields are required.</h1>");
+}
+
+function deleteShipment() {
+    if ($('#shipmentId').val() != '') {
+        var fd = new FormData();
+        fd.append("username", $('#comp-jie33eyfinput').val());
+        fd.append("password", $('#comp-jie33eyuinput').val());
+        deleteData($apiURL + '/transglobal/shipment/' + $('#shipmentId').val(), fd)
+            .then(response => {
+                if (response.response == 'success') {
+                    $('#deleteStatus').html("<h1 class='font--display-1'>Successfully deleted.</h1>");
+                    $('#shipmentId').val('');
+                }
+                else if (response.response == '')
+                    $('#deleteStatus').html("<h1 class='font--display-1'>Error occured, try again.</h1>");
+                else
+                    $('#deleteStatus').html("<h1 class='font--display-1'>" + response.response + "</h1>");
+            });
+
+        $('#deleteStatus').html("<div class='spinner-border text-success' style='width: 2rem; height: 2rem; margin: 5px 10px 0 0;' role='status'><span class='sr-only'>Loading...</span></div><h1 class='font--display-1'>Deleting</h1>");
+    }
+    else
+        $('#deleteStatus').html("<h1 class='font--display-1'>Shipment Number required.</h1>");
 }
