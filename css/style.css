@@ -2719,19 +2719,19 @@ tr {
     margin-bottom: 16px;
 }
 
-.expandable-table__wrapper > tbody > tr > td:nth-of-type(1), .expandable-table__wrapper > tbody > tr > td:nth-of-type(2) {
+.expandable-table__wrapper > tbody > tr > .container-details, .expandable-table__wrapper > tbody > tr > .container-size {
     width: 18%;
 }
 
-.expandable-table__wrapper > tbody > tr > td:nth-of-type(3) {
-    width: 15%;
-}
+    .expandable-table__wrapper > tbody > tr > .loading-date {
+        width: 15%;
+    }
 
-.expandable-table__wrapper > tbody > tr > td:nth-of-type(4) {
-    width: 20%;
-}
+    .expandable-table__wrapper > tbody > tr > .estimated-arrival-date {
+        width: 20%;
+    }
 
-.expandable-table__wrapper > tbody > tr > td:nth-of-type(5) {
+.expandable-table__wrapper > tbody > tr > .last-status {
     width: 25%;
 }
 
